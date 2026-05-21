@@ -1,6 +1,10 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
-void Initialize_list();
+typedef struct Node
+{
+    int value;
+    struct Node *next;
+} Node;
 void Action();
-void Insert_node();
+void Print_list(Node *val);
 #endif

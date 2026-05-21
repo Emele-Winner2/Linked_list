@@ -1,45 +1,45 @@
 #include "../include/linked_list.h"
-#include "stdio.h"
-#include "stdlib.h"
-struct linked_list
+#include <stdio.h>
+#include <stdlib.h>
+// built the singly linked list
+void Print_list(Node *val)
 {
-    int value;
-    struct linked_list *next;
-};
-long x = 0;
-struct linked_list *Head;
-struct linked_list *checker;
+    while (1)
+    {
+        if (val == NULL)
+        {
+            break;
+        }
+        printf("%d\n", val->value);
+        val = val->next;
+    }
+}
 void Action()
 {
-    int p;
-    printf("what would you like to do right now\n");
-    scanf("%d", &p);
-    if (p == 1)
-    {
-        Initialize_list();
-        Insert_node();
-    }
-}
-void Initialize_list()
-{
-    printf("Initializing the linked list\n");
-    Head = malloc(sizeof(struct linked_list));
+    Node *Head;
+    Head = (Node *)malloc(sizeof(Node));
     Head->next = NULL;
-}
-void Insert_node()
-{
-    if (x == 0)
+    Head->value = 10;
+    Node *node = (Node *)malloc(sizeof(Node));
+    Head->next = node;
+    for (int i = 0; i < 5; i++)
     {
-        printf("Input the first node in the linked list\n");
-        scanf("%d", &(Head->value));
+        printf("input the value for the %dst element: ", i);
+        int val;
+        scanf("%d", &val);
+        node->value = val;
+        Node *new_node = (Node *)malloc(sizeof(Node));
+        if (i == 4)
+        {
+            new_node = NULL;
+            node->next = NULL;
+        }
+        else
+        {
+            node->next = new_node;
+            new_node->next = NULL;
+            node = new_node;
+        }
     }
-    else
-    {
-        //  printf
-        //    linked_list
-        //      Head->next =
-    }
-    x++;
-    printf("%d", Head->value);
-    free(Head);
+    Print_list(Head);
 }
